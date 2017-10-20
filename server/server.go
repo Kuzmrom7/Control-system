@@ -15,15 +15,16 @@ import (
 	"./handlersfunc"
 )
 
-func handler(w http.ResponseWriter, r *http.Request){
+var handler = http.HandlerFunc( func (w http.ResponseWriter, r *http.Request){
 
-		w.Write([]byte("Hello world!"))
-}
+		w.Write([]byte("Hello, please change correct url!\n "))
+})
 
 func main(){
 	r := mux.NewRouter()
 
 	//ROUTES
+	r.Handle("/", handler)
 	r.Handle("/c/create", jwtMiddleware.Handler(handlersfunc.CreateContainer)).Methods("POST")
 	r.Handle("/c/run", jwtMiddleware.Handler(handlersfunc.RunContainer)).Methods("GET")
 	r.Handle("/c/stop", jwtMiddleware.Handler(handlersfunc.StopContainer)).Methods("GET")

@@ -46,7 +46,7 @@ var GetTokenHandler = http.HandlerFunc(func( w http.ResponseWriter, r * http.Req
 
 //
 func Validate(username, password string) bool {
-	if username == "Roman" && password == "Kuzmenko" {
+	if username == "roman" && password == "kuzmenko" {
 		return true
 	}
 	return false
